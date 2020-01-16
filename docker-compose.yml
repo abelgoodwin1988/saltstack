@@ -1,0 +1,22 @@
+version: '3.7'
+services: 
+    salt_master:
+        build: 
+            context: .
+            dockerfile: master.dockerfile
+        networks:
+            - salt_network
+        hostname: salt
+        ports:
+            - "4505:4505"
+            - "4506:4506"
+    salt_minion:
+        depends_on: 
+            - salt_master
+        build: 
+            context: .
+            dockerfile: minion.dockerfile
+        networks:
+            - salt_network
+networks:
+    salt_network:
