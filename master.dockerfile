@@ -11,6 +11,6 @@ RUN apk update && apk upgrade \
 RUN curl -o bootstrap-salt.sh -L https://bootstrap.saltstack.com \
     && sh bootstrap-salt.sh -U -X -d $BOOTSTRAP_OPTS $SALT_VERSION
 
-EXPOSE 4505 4506 22
+EXPOSE 4505 4506
 
 ENTRYPOINT [ "salt-master", "-l", "debug" ]

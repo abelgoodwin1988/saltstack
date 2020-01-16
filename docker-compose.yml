@@ -7,12 +7,14 @@ services:
         networks:
             - salt_network
         hostname: salt
-        ports:
-            - "4505:4505"
-            - "4506:4506"
+        expose: 
+            - "4505"
+            - "4506"
     salt_minion:
         depends_on: 
             - salt_master
+        links: 
+            - "salt_master:salt"
         build: 
             context: .
             dockerfile: minion.dockerfile
