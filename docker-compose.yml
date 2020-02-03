@@ -12,6 +12,7 @@ services:
             - "4506"
         volumes: 
             - ./salt:/srv/salt:ro
+            - ./pillar:/srv/pillar:ro
     salt-minion:
         depends_on: 
             - salt-master
